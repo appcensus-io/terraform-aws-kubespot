@@ -467,6 +467,12 @@ variable "eks_auto_mode_enabled" {
   default     = false
 }
 
+variable "eks_nodegroup_create_before_destroy" {
+  description = "Enable lifecycle creation before destruction"
+  type        = bool
+  default     = false
+}
+
 variable "cloudwatch_observability_enabled" {
   description = "Enable or disable the CloudWatch Observability Add-on for EKS"
   type        = bool

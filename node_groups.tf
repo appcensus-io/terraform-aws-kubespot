@@ -114,6 +114,13 @@ resource "aws_eks_node_group" "node_group" {
     max_unavailable_percentage = lookup(each.value, "update_unavailable_percent", 50)
   }
 
+  dynamic "lifecycle" {
+    for_each = var.eks_nodegroup_create_before_destroy ? [1] : []
+    content {
+      create_before_destroy = true
+    }
+  }
+
   dynamic "taint" {
     for_each = lookup(each.value, "taints", [])
     content {
