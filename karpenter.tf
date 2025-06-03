@@ -51,6 +51,11 @@ resource "helm_release" "karpenter" {
   }
 
   set {
+    name  = "settings.featureGates.nodeRepair"
+    value = var.karpenter_node_auto_repair
+  }
+
+  set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = module.karpenter[0].iam_role_arn
   }

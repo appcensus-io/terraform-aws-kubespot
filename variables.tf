@@ -398,6 +398,12 @@ variable "karpenter_ami_family" {
   default     = "Bottlerocket"
 }
 
+variable "karpenter_node_auto_repair" {
+  description = "Enable alpha feature for Noderepair"
+  type        = bool
+  default     = false
+}
+
 variable "csi_secrets_store_enabled" {
   default     = false
   description = "Specify whether the CSI driver is enabled on the EKS cluster"
