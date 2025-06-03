@@ -88,6 +88,7 @@ resource "aws_eks_addon" "core" {
     "vpc-cni",
     "coredns",
     "aws-ebs-csi-driver",
+    "eks-node-monitoring-agent",
     var.s3_csi_driver_enabled ? ["aws-mountpoint-s3-csi-driver"] : [],
     var.efs_enabled ? ["aws-efs-csi-driver"] : [],
     var.cloudwatch_observability_enabled ? ["amazon-cloudwatch-observability"] : [],
