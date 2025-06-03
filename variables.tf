@@ -359,7 +359,8 @@ variable "node_groups" {
     #   node_disk_size        = 20,
     #   node_desired_capacity = 1,
     #   nodes_max_size        = 1,
-    #   nodes_min_size        = 1
+    #   nodes_min_size        = 1,
+    # . nodegroup_auto_repair = false
     #
     # },
     # "t3.small" = {
@@ -369,7 +370,8 @@ variable "node_groups" {
     #   node_disk_size        = 20,
     #   node_desired_capacity = 1,
     #   nodes_max_size        = 1,
-    #   nodes_min_size        = 1
+    #   nodes_min_size        = 1,
+    #   nodegroup_auto_repair = false
     # },
 
   }
