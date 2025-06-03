@@ -115,7 +115,7 @@ resource "aws_eks_node_group" "node_group" {
   }
 
   lifecycle {
-    create_before_destroy = var.eks_nodegroup_create_before_destroy
+    create_before_destroy = true
   }
 
   node_repair_config {
