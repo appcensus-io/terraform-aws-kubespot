@@ -36,20 +36,25 @@ resource "helm_release" "karpenter" {
   chart      = "karpenter"
   version    = var.karpenter_version
 
-  set = [
-    {
-      name  = "settings.clusterName"
-      value = aws_eks_cluster.cluster.name
-    },
-    {
-      name  = "settings.clusterEndpoint"
-      value = aws_eks_cluster.cluster.endpoint
-    },
-    {
-      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-      value = module.karpenter[0].iam_role_arn
-    }
-  ]
+  set {
+    name  = "settings.clusterName"
+    value = aws_eks_cluster.cluster.name
+  }
+
+  set {
+    name  = "settings.clusterEndpoint"
+    value = aws_eks_cluster.cluster.endpoint
+  }
+
+  set {
+    name  = "settings.featureGates.nodeRepair"
+    value = var.karpenter_node_auto_repair
+  }
+
+  set {
+    name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+    value = module.karpenter[0].iam_role_arn
+  }
 
   depends_on = [
     helm_release.karpenter_crd
