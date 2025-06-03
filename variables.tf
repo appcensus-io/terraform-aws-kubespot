@@ -475,6 +475,12 @@ variable "eks_auto_mode_enabled" {
   default     = false
 }
 
+variable "eks_node_monitoring_enabled" {
+  description = "Enable node monitoring agent add-on to support auto repair"
+  type        = bool
+  default     = false
+}
+
 variable "cloudwatch_observability_enabled" {
   description = "Enable or disable the CloudWatch Observability Add-on for EKS"
   type        = bool
