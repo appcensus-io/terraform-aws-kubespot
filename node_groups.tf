@@ -80,7 +80,7 @@ resource "aws_eks_node_group" "node_group" {
   for_each = var.node_groups
 
   cluster_name    = aws_eks_cluster.cluster.name
-  node_group_name = "${var.environment_name}-${each.key}"
+  node_group_name_prefix = "${var.environment_name}-${each.key}"
   node_role_arn   = aws_iam_role.node.arn
 
   subnet_ids = length(lookup(each.value, "subnet_ids", [])) == 0 ? (lookup(each.value, "nodes_in_public_subnet", true) ? aws_subnet.public.*.id : aws_subnet.private.*.id) : lookup(each.value, "subnet_ids", [])
@@ -112,6 +112,14 @@ resource "aws_eks_node_group" "node_group" {
 
   update_config {
     max_unavailable_percentage = lookup(each.value, "update_unavailable_percent", 50)
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  node_repair_config {
+    enabled = lookup(each.value, "nodegroup_auto_repair", false)
   }
 
   dynamic "taint" {

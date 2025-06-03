@@ -359,7 +359,8 @@ variable "node_groups" {
     #   node_disk_size        = 20,
     #   node_desired_capacity = 1,
     #   nodes_max_size        = 1,
-    #   nodes_min_size        = 1
+    #   nodes_min_size        = 1,
+    # . nodegroup_auto_repair = false
     #
     # },
     # "t3.small" = {
@@ -369,7 +370,8 @@ variable "node_groups" {
     #   node_disk_size        = 20,
     #   node_desired_capacity = 1,
     #   nodes_max_size        = 1,
-    #   nodes_min_size        = 1
+    #   nodes_min_size        = 1,
+    #   nodegroup_auto_repair = false
     # },
 
   }
@@ -394,6 +396,12 @@ variable "karpenter_ami_family" {
   description = "AMI family to use for the EC2 Node Class. Possible values: AL2 or Bottlerocket"
   type        = string
   default     = "Bottlerocket"
+}
+
+variable "karpenter_node_auto_repair" {
+  description = "Enable alpha feature for Noderepair"
+  type        = bool
+  default     = false
 }
 
 variable "csi_secrets_store_enabled" {
@@ -463,6 +471,12 @@ variable "s3_csi_bucket_names" {
 
 variable "eks_auto_mode_enabled" {
   description = "Enable Auto Mode for EKS cluster"
+  type        = bool
+  default     = false
+}
+
+variable "eks_node_monitoring_enabled" {
+  description = "Enable node monitoring agent add-on to support auto repair"
   type        = bool
   default     = false
 }
