@@ -175,17 +175,17 @@ resource "helm_release" "calico" {
   version    = var.calico_version
 
   # Set Calico-specific configuration values
-  set {
+  set = {
     name  = "kubernetesProvider"
     value = "EKS"
   }
 
-  set {
+  set = {
     name  = "cni.type"
     value = "Calico"
   }
 
-  set {
+  set = {
     name  = "calicoNetwork.bgp"
     value = "Disabled"
   }
