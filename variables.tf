@@ -404,6 +404,12 @@ variable "karpenter_node_auto_repair" {
   default     = false
 }
 
+variable "karpenter_node_spot_to_spot_consolidation" {
+  description = "Enable feature for spot to spot node consolidation"
+  type        = bool
+  default     = false
+}
+
 variable "csi_secrets_store_enabled" {
   default     = false
   description = "Specify whether the CSI driver is enabled on the EKS cluster"
