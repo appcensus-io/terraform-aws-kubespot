@@ -234,6 +234,7 @@ the PSP to the [equivalent new standard](https://kubernetes.io/docs/tasks/config
 | <a name="input_efs_enabled"></a> [efs\_enabled](#input\_efs\_enabled) | Specify whether the EFS is enabled on the EKS cluster | `bool` | `false` | no |
 | <a name="input_eips"></a> [eips](#input\_eips) | List of Elastic IPs | `list` | `[]` | no |
 | <a name="input_eks_auto_mode_enabled"></a> [eks\_auto\_mode\_enabled](#input\_eks\_auto\_mode\_enabled) | Enable Auto Mode for EKS cluster | `bool` | `false` | no |
+| <a name="input_eks_node_monitoring_enabled"></a> [eks\_node\_monitoring\_enabled](#input\_eks\_node\_monitoring\_enabled) | Enable node monitoring agent add-on to support auto repair | `bool` | `false` | no |
 | <a name="input_enable_egress_only_internet_gateway"></a> [enable\_egress\_only\_internet\_gateway](#input\_enable\_egress\_only\_internet\_gateway) | Create an egress-only Internet gateway for your VPC0 | `bool` | `false` | no |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Enable an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC | `bool` | `false` | no |
 | <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | Name of the environment to create AWS resources | `string` | n/a | yes |
@@ -242,6 +243,7 @@ the PSP to the [equivalent new standard](https://kubernetes.io/docs/tasks/config
 | <a name="input_iam_users"></a> [iam\_users](#input\_iam\_users) | List of IAM users | `list` | `[]` | no |
 | <a name="input_karpenter_ami_family"></a> [karpenter\_ami\_family](#input\_karpenter\_ami\_family) | AMI family to use for the EC2 Node Class. Possible values: AL2 or Bottlerocket | `string` | `"Bottlerocket"` | no |
 | <a name="input_karpenter_enabled"></a> [karpenter\_enabled](#input\_karpenter\_enabled) | Specify whether the karpenter is enabled | `bool` | `false` | no |
+| <a name="input_karpenter_node_auto_repair"></a> [karpenter\_node\_auto\_repair](#input\_karpenter\_node\_auto\_repair) | Enable alpha feature for Noderepair | `bool` | `false` | no |
 | <a name="input_karpenter_version"></a> [karpenter\_version](#input\_karpenter\_version) | The version of the karpenter helm chart | `string` | `"1.0.1"` | no |
 | <a name="input_metrics_server_version"></a> [metrics\_server\_version](#input\_metrics\_server\_version) | The version of the metric server helm chart | `string` | `"3.11.0"` | no |
 | <a name="input_nat_enabled"></a> [nat\_enabled](#input\_nat\_enabled) | Whether the NAT gateway is enabled | `bool` | `true` | no |
