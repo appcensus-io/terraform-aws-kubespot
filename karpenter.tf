@@ -8,6 +8,8 @@ module "karpenter" {
   source  = "terraform-aws-modules/eks/aws//modules/karpenter"
   version = "21.3.2"
 
+  namespace = "karpenter"
+
   cluster_name = var.environment_name
 
   #enable_irsa                     = true
