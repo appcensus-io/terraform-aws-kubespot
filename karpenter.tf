@@ -29,8 +29,6 @@ module "karpenter" {
   queue_name = "${var.environment_name}-spot-termination"
 
   tags = local.tags
-
-  depends_on = [ aws_eks_addon.pod_identity ]
 }
 
 resource "helm_release" "karpenter" {
