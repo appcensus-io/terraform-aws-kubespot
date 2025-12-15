@@ -492,3 +492,9 @@ variable "cloudwatch_observability_config" {
   type        = string
   default     = null
 }
+
+variable "vpce_enabled" {
+  description = "Configure set of AWS service endpoints for the cluster to avoid excessive NAT charges"
+  type    = bool
+  default = true
+}
