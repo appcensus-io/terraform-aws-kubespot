@@ -6,6 +6,15 @@ locals {
   # https://github.com/aws-samples/amazon-cloudwatch-container-insights/releases
   eks_pod_logs_cloudwatch_fluent_bit_version = "1.3.19"
 
+  vpce_interface_services_base = [
+    "ecr.api",
+    "ecr.dkr",
+    "sts",
+    "logs",
+  ]
+
+  vpce_interface_services = local.vpce_interface_services_base
+
   tags = merge(var.tags, {
     "KubespotEnvironment" = var.environment_name
   })
