@@ -6,13 +6,15 @@ module "karpenter" {
   count = var.karpenter_enabled ? 1 : 0
 
   source  = "terraform-aws-modules/eks/aws//modules/karpenter"
-  version = "20.36.0"
+  version = "21.3.2"
+
+  namespace = "karpenter"
 
   cluster_name = var.environment_name
 
-  enable_irsa                     = true
-  irsa_oidc_provider_arn          = aws_iam_openid_connect_provider.cluster.arn
-  irsa_namespace_service_accounts = ["karpenter:karpenter"]
+  #enable_irsa                     = true
+  #irsa_oidc_provider_arn          = aws_iam_openid_connect_provider.cluster.arn
+  #irsa_namespace_service_accounts = ["karpenter:karpenter"]
 
   create_iam_role = true
   iam_role_name   = substr("${var.environment_name}-karpenter-controller", 0, 37)
@@ -27,6 +29,8 @@ module "karpenter" {
   queue_name = "${var.environment_name}-spot-termination"
 
   tags = local.tags
+
+  depends_on = [ aws_eks_addon.pod_identity ]
 }
 
 resource "helm_release" "karpenter" {
