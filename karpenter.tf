@@ -56,6 +56,10 @@ resource "helm_release" "karpenter" {
     {
       name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
       value = module.karpenter[0].iam_role_arn
+    },
+    {
+      name = "settings.featureGates.spotToSpotConsolidation"
+      value = var.karpenter_node_spot_to_spot_consolidation
     }
   ]
 
